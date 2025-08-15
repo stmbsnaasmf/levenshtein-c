@@ -2,35 +2,8 @@
 
 int stringLength(char* str);
 char* tail(char* str);
-
-int min(int x, int y, int z)
-{
-	int minimum = x;
-
-	if (y < x)
-	{
-		minimum = y;
-		if (z < y) minimum = z;
-	}
-	else if (z < x)
-	{
-		minimum = z;
-		if (y < z) minimum = y;
-	}
-	
-	return minimum;
-}
-
-void stringCopy(char* destination, const char* source)
-{
-	int index = 0;
-	while (source[index] != '\0')
-	{
-		destination[index] = source[index];
-		index++;
-	}
-	destination[index] = '\0';
-}
+int min(int x, int y, int z);
+void stringCopy(char* destination, const char* source);
 
 int lev(char* a, char* b)
 {
@@ -52,11 +25,11 @@ int lev(char* a, char* b)
 
 int main()
 {
-//	char a[] = "kitten\0";
-//	char b[] = "sitting\0";
+	char a[] = "kitten\0";
+	char b[] = "sitting\0";
 
-	char a[] = "qwertyuiop\0";
-	char b[] = "zxcvbnm\0";
+	char c[] = "qwertyuiop\0";
+	char d[] = "zxcvbnm\0";
 
 //	char a0[stringLength(a) + 1]; stringCopy(a0, a);
 //	printf("Original = %s, copy = %s\n", a, a0);
@@ -67,9 +40,40 @@ int main()
 //	printf("Tail(%s) = %s", a, tail(a));
 
 //	printf("Lenght of string %s is %d", a, stringLength(a));
-	printf("The Levenshtien distance between %s and %s is %d.", a, b, lev(a, b));
+	
+	printf("The Levenshtien distance between \"%s\" and \"%s\" is %d.\n", a, b, lev(a, b));
+	printf("The Levenshtien distance between \"%s\" and \"%s\" is %d.\n", c, d, lev(c, d));
 
 	return 0;
+}
+
+void stringCopy(char* destination, const char* source)
+{
+	int index = 0;
+	while (source[index] != '\0')
+	{
+		destination[index] = source[index];
+		index++;
+	}
+	destination[index] = '\0';
+}
+
+int min(int x, int y, int z)
+{
+	int minimum = x;
+
+	if (y < x)
+	{
+		minimum = y;
+		if (z < y) minimum = z;
+	}
+	else if (z < x)
+	{
+		minimum = z;
+		if (y < z) minimum = y;
+	}
+	
+	return minimum;
 }
 
 char* tail(char* str)
